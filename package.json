@@ -1,0 +1,26 @@
+{
+  "name": "team-info-generator",
+  "version": "1.0.0",
+  "description": "This application will generate cards with team members information inputted from the terminal.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Patrickgp/team-info-generator.git"
+  },
+  "author": "Patrick Poopathi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Patrickgp/team-info-generator/issues"
+  },
+  "homepage": "https://github.com/Patrickgp/team-info-generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "jest": "^28.1.3"
+  }
+}
