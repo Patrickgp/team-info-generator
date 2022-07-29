@@ -1,1 +1,1 @@
-# team-info-generator
+# the-whole-team
