@@ -6,6 +6,8 @@ const Manager = require("./lib/Manager");
 
 const employees = [];
 
+addEmployee();
+
 function addEmployee() {
   inquirer
     .prompt([
@@ -40,31 +42,36 @@ function addEmployee() {
       } else {
         roleSelection = "School they are currently enrolled in: ";
       }
-    });
-  inquirer
-    .prompt([
-      {
-        type: "input",
-        message: `Provide employee's ${roleSelection}`,
-        name: "roleSelection",
-      },
-      {
-        type: "confirm",
-        message: "Would you like to add more employees?",
-        name: "moreEmployees",
-      },
-    ])
-    .then(function ({ roleSelection }) {
-      let newEmployee;
-      if (role === "Manager") {
-        newEmployee = new Manager(name, id, email, roleSelection);
-      } else if (role === "Engineer") {
-        newEmployee = new Engineer(name, id, email, roleSelection);
-      } else {
-        newEmployee = new Intern(name, id, email, roleSelection);
-      }
-      employees.push(newEmployee);
+      inquirer
+        .prompt([
+          {
+            type: "input",
+            message: `Provide employee's ${roleSelection}`,
+            name: "roleSelection",
+          },
+          {
+            type: "confirm",
+            message: "Would you like to add more employees?",
+            name: "moreEmployees",
+          },
+        ])
+        .then(function ({ roleSelection }) {
+          let newEmployee;
+          if (role === "Manager") {
+            newEmployee = new Manager(name, id, email, roleSelection);
+          } else if (role === "Engineer") {
+            newEmployee = new Engineer(name, id, email, roleSelection);
+          } else {
+            newEmployee = new Intern(name, id, email, roleSelection);
+          }
+          employees.push(newEmployee);
+          addHtml(newEmployee).then(function () {
+            if (moreEmployees) {
+              addEmployee();
+            } else {
+              return;
+            }
+          });
+        });
     });
 }
-
-addEmployee();
