@@ -1,8 +1,8 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
-// const Engineer = require("./lib/Engineer");
-// const Intern = require("./lib/Intern");
-// const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+const Manager = require("./lib/Manager");
 
 const employees = [];
 
@@ -54,7 +54,7 @@ function addEmployee() {
         name: "moreEmployees",
       },
     ])
-    .then(function ({ roleSelection, moreEmployees }) {
+    .then(function ({ roleSelection }) {
       let newEmployee;
       if (role === "Manager") {
         newEmployee = new Manager(name, id, email, roleSelection);
