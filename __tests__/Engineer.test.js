@@ -1,6 +1,7 @@
 const Engineer = require("../lib/Engineer");
 
-test("Should get github username from constructor", () => {
+// Test for getting github username from the Engineer Constructor
+test("Should get github username from Engineer Constructor", () => {
   const fakeGithub = "Patrickgp";
   const engineer = new Engineer(
     "Patrick",
@@ -11,6 +12,7 @@ test("Should get github username from constructor", () => {
   expect(engineer.github).toBe(fakeGithub);
 });
 
+// Test to return Engineer role from getRole()
 test("Should return Engineer from getRole()", () => {
   const fakeRole = "Engineer";
   const engineer = new Engineer(
@@ -22,6 +24,7 @@ test("Should return Engineer from getRole()", () => {
   expect(engineer.getRole()).toBe(fakeRole);
 });
 
+// Test to return github username from getGithub()
 test("Should get github username through the getGithub()", () => {
   const fakeGithub1 = "Patrickgp";
   const engineer = new Engineer(
