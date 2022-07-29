@@ -1,12 +1,16 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
+const { start } = require("repl");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 
 const employees = [];
 
-addEmployee();
+function init() {
+  startHtml();
+  addEmployee();
+}
 
 function addEmployee() {
   inquirer
@@ -66,27 +70,97 @@ function addEmployee() {
           }
           employees.push(newEmployee);
           addHtml(newEmployee).then(function () {
-            if (moreEmployees) {
+            if ((moreEmployees = true)) {
               addEmployee();
             } else {
-              return;
+              finishHtml();
             }
           });
         });
     });
 }
 
-function startHTML() {
-  const html = `
-  <!DOCTYPE html>
-<html lang="en">
+function startHtml() {
+  const html = `<!DOCTYPE html>
+  <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Whole Team</title>
   </head>
-  <body></body>
-</html>
+  <body>
   `;
+  fs.writeFile("./dist/roster.html", html, function (err) {
+    if (err) {
+      console.log(err);
+    }
+  });
+  console.log("Let's Begin");
 }
+
+function addHtml(teammate) {
+  return new Promise(function (resolve, reject) {
+    const name = teammate.getName();
+    const role = teammate.getRole();
+    const id = teammate.getId();
+    const email = teammate.getEmail();
+    let insert = "";
+    if (role === "Manager") {
+      const officeNumber = teammate.getOfficeNumber();
+      insert = `<div class = "col-12">
+      <h1>${name}</h1>
+      <ul>
+        <li>ID: ${id}</li>
+        <li>Email: ${email}</li>
+        <li>Office Number: ${officeNumber}</li>
+      </ul>
+      </div>
+      `;
+    } else if (role === "Engineer") {
+      const github = teammate.getGithub();
+      insert = `<div class = "col-12">
+      <h1>${name}</h1>
+      <ul>
+        <li>ID: ${id}</li>
+        <li>Email: ${email}</li>
+        <li>Github Username: ${github}</li>
+      </ul>
+      </div>
+      `;
+    } else {
+      const school = teammate.getSchool();
+      insert = `<div class = "col-12">
+      <h1>${name}</h1>
+      <ul>
+        <li>ID: ${id}</li>
+        <li>Email: ${email}</li>
+        <li>School: ${school}</li>
+      </ul>
+      </div>
+      `;
+    }
+    console.log("Added employee");
+    fs.appendFile("./dist/roster.html", insert, function (err) {
+      if (err) {
+        return reject(err);
+      }
+      return resolve();
+    });
+  });
+}
+
+function finishHtml() {
+  const html = `</body>
+  </html> 
+  `;
+
+  fs.appendFile("./dist/roster.html", html, function (err) {
+    if (err) {
+      console.log(err);
+    }
+  });
+  console.log("That's the whole team!");
+}
+
+init();
