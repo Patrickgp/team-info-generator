@@ -111,8 +111,8 @@ function addHtml(teammate) {
     let insert = "";
     if (role === "Manager") {
       const officeNumber = teammate.getOfficeNumber();
-      insert = `<div class= "card text-center" style="width: 18rem;">
-      <div class="card-header bg-primary text-light" style="font-size: 2rem;">${name}</div>
+      insert = `<div class= "card" style="width: 18rem;">
+      <div class="card-header bg-primary text-light" style="font-size: 2rem;">${name}</br><span style="font-size: 1.3rem;">${role}</span></div>
       <div class="card-body">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">${role}</li>
@@ -125,8 +125,8 @@ function addHtml(teammate) {
       `;
     } else if (role === "Engineer") {
       const github = teammate.getGithub();
-      insert = `<div class = "card text-center" style="width: 18rem;">
-      <div class="card-header bg-primary text-light" style="font-size: 1rem;">${name}</div>
+      insert = `<div class = "card" style="width: 18rem;">
+      <div class="card-header bg-primary text-light" style="font-size: 2rem;">${name}</br><span style="font-size: 1.3rem;">${role}</span></div>
       <div class="card-body">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">${role}</li>
@@ -139,8 +139,8 @@ function addHtml(teammate) {
       `;
     } else {
       const school = teammate.getSchool();
-      insert = `<div class = "card text-center" style="width: 18rem;">
-      <div class="card-header bg-primary text-light" style="font-size: 1rem;">${name}</div>
+      insert = `<div class = "card" style="width: 18rem;">
+      <div class="card-header bg-primary text-light" style="font-size: 2rem;">${name}</br><span style="font-size: 1.3rem;">${role}</span></div>
       <div class="card-body">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">${role}</li>
