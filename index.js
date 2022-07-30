@@ -54,12 +54,13 @@ function addEmployee() {
             name: "roleSelection",
           },
           {
-            type: "confirm",
+            type: "list",
             message: "Would you like to add more employees?",
+            choices: ["Yes", "No"],
             name: "moreEmployees",
           },
         ])
-        .then(function ({ roleSelection }) {
+        .then(function ({ roleSelection, moreEmployees }) {
           let newEmployee;
           if (role === "Manager") {
             newEmployee = new Manager(name, id, email, roleSelection);
@@ -70,7 +71,7 @@ function addEmployee() {
           }
           employees.push(newEmployee);
           addHtml(newEmployee).then(function () {
-            if ((moreEmployees = true)) {
+            if (moreEmployees === "Yes") {
               addEmployee();
             } else {
               finishHtml();
