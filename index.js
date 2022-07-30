@@ -111,8 +111,8 @@ function addHtml(teammate) {
     let insert = "";
     if (role === "Manager") {
       const officeNumber = teammate.getOfficeNumber();
-      insert = `<div class= "card" style="width: 18rem;">
-      <div class="card-header bg-primary text-light" style="font-size: 2rem;">${name}</br><span style="font-size: 1.3rem;">${role}</span></div>
+      insert = `<div class= "card team-card">
+      <div class="card-header bg-primary text-light" style="font-size: 2rem;">${name}</div>
       <div class="card-body">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">${role}</li>
@@ -121,26 +121,32 @@ function addHtml(teammate) {
         <li class="list-group-item">Office Number: ${officeNumber}</li>
       </ul>
       </div>
+      <div class="card-footer">
+      <small class="text-muted">${role}</small>
+      </div>
       </div>
       `;
     } else if (role === "Engineer") {
       const github = teammate.getGithub();
-      insert = `<div class = "card" style="width: 18rem;">
-      <div class="card-header bg-primary text-light" style="font-size: 2rem;">${name}</br><span style="font-size: 1.3rem;">${role}</span></div>
+      insert = `<div class = "card team-card">
+      <div class="card-header bg-primary text-light" style="font-size: 2rem;">${name}</div>
       <div class="card-body">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">${role}</li>
         <li class="list-group-item">ID: ${id}</li>
         <li class="list-group-item">Email: ${email}</li>
-        <li class="list-group-item">Github Username: ${github}</li>
+        <li class="list-group-item">Github Username: <a target="_blank" href="https://www.github.com/${github}">${github}</a></li>
       </ul>
+      </div>
+      <div class="card-footer">
+      <small class="text-muted">${role}</small>
       </div>
       </div>
       `;
     } else {
       const school = teammate.getSchool();
-      insert = `<div class = "card" style="width: 18rem;">
-      <div class="card-header bg-primary text-light" style="font-size: 2rem;">${name}</br><span style="font-size: 1.3rem;">${role}</span></div>
+      insert = `<div class = "card team-card">
+      <div class="card-header bg-primary text-light" style="font-size: 2rem;">${name}</div>
       <div class="card-body">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">${role}</li>
@@ -148,6 +154,9 @@ function addHtml(teammate) {
         <li class="list-group-item">Email: ${email}</li>
         <li class="list-group-item">School: ${school}</li>
       </ul>
+      </div>
+      <div class="card-footer">
+      <small class="text-muted">${role}</small>
       </div>
       </div>
       `;
@@ -171,6 +180,20 @@ function finishHtml() {
     </body>
   </html> 
   `;
+
+  function addCss() {
+    const css = `
+    .team-card{
+      width: 18rem;
+    }
+    `;
+  }
+
+  fs.appendFile("./dist/style.css", css, function (err) {
+    if (err) {
+      console.log(err);
+    }
+  });
 
   fs.appendFile("./dist/roster.html", html, function (err) {
     if (err) {
