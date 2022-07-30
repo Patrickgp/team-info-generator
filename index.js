@@ -88,11 +88,13 @@ function startHtml() {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">    <title>The Whole Team</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css" />
+    <title>The Whole Team</title>
   </head>
   <body>
   <div class="container-fluid d-flex justify-content-center py-5 bg-primary text-light" style="font-size: 2rem">My Team</div>
-  <div class="card-deck">
+  <div class="card-deck mt-5">
   `;
   fs.writeFile("./dist/roster.html", html, function (err) {
     if (err) {
@@ -112,7 +114,7 @@ function addHtml(teammate) {
     if (role === "Manager") {
       const officeNumber = teammate.getOfficeNumber();
       insert = `<div class= "card team-card">
-      <div class="card-header bg-primary text-light" style="font-size: 2rem;">${name}</div>
+      <div class="card-header bg-primary text-light name-card">${name}</div>
       <div class="card-body">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">${role}</li>
@@ -129,7 +131,7 @@ function addHtml(teammate) {
     } else if (role === "Engineer") {
       const github = teammate.getGithub();
       insert = `<div class = "card team-card">
-      <div class="card-header bg-primary text-light" style="font-size: 2rem;">${name}</div>
+      <div class="card-header bg-primary text-light name-card">${name}</div>
       <div class="card-body">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">${role}</li>
@@ -146,7 +148,7 @@ function addHtml(teammate) {
     } else {
       const school = teammate.getSchool();
       insert = `<div class = "card team-card">
-      <div class="card-header bg-primary text-light" style="font-size: 2rem;">${name}</div>
+      <div class="card-header bg-primary text-light name-card">${name}</div>
       <div class="card-body">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">${role}</li>
@@ -181,15 +183,15 @@ function finishHtml() {
   </html> 
   `;
 
-  function addCss() {
-    const css = `
-    .team-card{
+  const css = `.team-card{
       width: 18rem;
     }
+  .name-card{
+    font-size: 2rem;
+    }
     `;
-  }
 
-  fs.appendFile("./dist/style.css", css, function (err) {
+  fs.writeFile("./dist/style.css", css, function (err) {
     if (err) {
       console.log(err);
     }
