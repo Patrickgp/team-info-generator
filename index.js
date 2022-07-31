@@ -107,8 +107,6 @@ function startHtml() {
   <div class="container-fluid d-flex justify-content-center py-5 bg-primary text-light title">My Team</div>
   <div class="container-fluid d-flex justify-content-center">
   <div class="row">
-  <div class="col">
-  <div class="card-deck mt-5">
   `;
   // This will write the beginning of my roster.html file
   fs.writeFile("./dist/roster.html", html, function (err) {
@@ -134,7 +132,8 @@ function addHtml(teammate) {
     let insert = "";
     if (role === "Manager") {
       const officeNumber = teammate.getOfficeNumber();
-      insert = `<div class= "card team-card">
+      insert = `<div class="col mt-5 d-flex justify-content-center">
+      <div class= "card team-card">
       <div class="card-header bg-primary text-light name-card">${name}</div>
       <div class="card-body">
       <ul class="list-group list-group-flush">
@@ -148,10 +147,12 @@ function addHtml(teammate) {
       <small class="text-muted">${role}</small>
       </div>
       </div>
+      </div>
       `;
     } else if (role === "Engineer") {
       const github = teammate.getGithub();
-      insert = `<div class= "card team-card">
+      insert = `<div class="col mt-5 d-flex justify-content-center">
+      <div class= "card team-card">
       <div class="card-header bg-primary text-light name-card">${name}</div>
       <div class="card-body">
       <ul class="list-group list-group-flush">
@@ -165,10 +166,12 @@ function addHtml(teammate) {
       <small class="text-muted">${role}</small>
       </div>
       </div>
+      </div>
       `;
     } else {
       const school = teammate.getSchool();
-      insert = `<div class= "card team-card">
+      insert = `<div class="col mt-5 d-flex justify-content-center">
+      <div class= "card team-card">
       <div class="card-header bg-primary text-light name-card">${name}</div>
       <div class="card-body">
       <ul class="list-group list-group-flush">
@@ -180,6 +183,7 @@ function addHtml(teammate) {
       </div>
       <div class="card-footer">
       <small class="text-muted">${role}</small>
+      </div>
       </div>
       </div>
       `;
