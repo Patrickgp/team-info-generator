@@ -35,7 +35,7 @@ Email me: patrickgp1992@hotmail.com
 # Test
 npm run test {employee, engineer, manager, intern}
 
-#Screenshots
+# Screenshots
 
 * Using Github's issues to stay on track for class design:
 <img width="1512" alt="Screen Shot 2022-07-28 at 8 08 52 PM" src="https://user-images.githubusercontent.com/86730331/182047341-a30382fc-5e27-4225-bdf1-1ab3d8160da4.png">
