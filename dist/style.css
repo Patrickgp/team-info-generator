@@ -1,10 +1,34 @@
-.team-card{
+:root {
+    --title-color: #253237;
+    --main-bg-color: white;
+    --manager-color: #5c6b73;
+    --engineer-color: #447691;
+    --intern-color: #39575c;
+  }
+  body {
+    background-color: var(--main-bg-color);
+    font-family: "Poppins", sans-serif;
+  }
+  .title {
+    font-size: 2rem;
+    background-color: var(--title-color);
+    border-bottom: black 3px solid;
+  }
+  .name-card {
+    font-size: 2rem;
+  }
+  .team-card {
     width: 18rem;
+    box-shadow: 2px 2px 20px;
   }
-.name-card{
-  font-size: 2rem;
+  .manager-bg {
+    background-color: var(--manager-color);
   }
-.title{
-  font-size: 2rem;
-}
+  .engineer-bg {
+    background-color: var(--engineer-color);
+  }
+  .intern-bg {
+    background-color: var(--intern-color);
+  }
+  
   
