@@ -189,7 +189,7 @@ function addHtml(teammate) {
       <ul class="list-group list-group-flush">
         <li class="list-group-item">${role}</li>
         <li class="list-group-item">ID: ${id}</li>
-        <li class="list-group-item">Email: ${email}</li>
+        <li class="list-group-item">Email: <a href = "mailto: ${email}">${email}</a></li>
         <li class="list-group-item">Github Username: <a target="_blank" href="https://www.github.com/${github}">${github}</a></li>
       </ul>
       </div>
