@@ -6,7 +6,7 @@
 https://drive.google.com/file/d/1W63MAFfJs6Rrg7pYXwDOAOuSaXRVWqtO/view
 
 # Description
-This application was created to keep your teams information readily accessible. By inputting your team members/employees into the terminal and classifying them into 3 groups (Managers, Engineers, and Interns) you can record their office number, their github repo, or their university that they studied at.Once the information is inputted the program will generate a html file that will have cards created for each employee.
+This application was created to keep your teams information readily accessible. By inputting your team members/employees into the terminal and classifying them into 3 groups (Managers, Engineers, and Interns) you can record their office number, their github repo, or their university that they studied at. Once the information is inputted the program will generate a html file that will have cards created for each employee.
 ### Tech used in program: HTML,CSS,JavaScript,Node.js,Bootstrap
 
 # Table of Contents
